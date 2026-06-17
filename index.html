@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Damien Valdan — Réflexions d'un entrepreneur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400;1,6..72,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --ink:#ECE7DC;
+  --muted:rgba(236,231,220,0.56);
+  --faint:rgba(236,231,220,0.30);
+  --line:rgba(236,231,220,0.13);
+  --accent:#ECE7DC;
+  --bg:#0c0b0a;
+}
+html,body{background:var(--bg);color:var(--ink);font-family:'Hanken Grotesk',system-ui,sans-serif;-webkit-font-smoothing:antialiased;min-height:100vh;overflow-x:hidden;}
+::selection{background:rgba(236,231,220,0.16);color:#fff;}
+input::placeholder{color:var(--faint);}
+button{cursor:pointer;font-family:inherit;}
+.section{display:none;}
+.section.active{display:block;}
+
+#layout-toggle{position:fixed;top:22px;right:24px;z-index:30;display:none;align-items:center;font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;mix-blend-mode:difference;}
+.toggle-label{color:var(--faint);margin-right:14px;}
+.toggle-btn{background:none;border:none;padding:0 2px;font:inherit;letter-spacing:0.18em;color:var(--faint);transition:opacity 0.2s;}
+.toggle-btn.active{color:var(--ink);}
+.toggle-sep{color:var(--faint);padding:0 8px;}
+
+.bar-track{height:5px;background:var(--line);border-radius:999px;overflow:hidden;}
+.bar-track.tall{height:6px;}
+.bar-fill{height:100%;border-radius:999px;background:var(--accent);transition:width 0.7s cubic-bezier(.2,.7,.2,1);}
+
+.btn-vote{background:none;border:none;padding:0;transition:opacity 0.2s;color:var(--muted);}
+.btn-vote:hover{opacity:0.75;}
+.btn-read{display:inline-flex;align-items:center;gap:9px;background:none;border:none;padding:0;color:var(--ink);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;transition:gap 0.3s ease;}
+.btn-read:hover{gap:14px;}
+.btn-react{background:none;border:none;color:var(--muted);font-size:11px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;white-space:nowrap;transition:color 0.2s;}
+.btn-react:hover{color:var(--ink);}
+.btn-sub{background:none;border:none;color:var(--accent);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;padding-left:14px;transition:color 0.2s;}
+.btn-sub:hover{color:var(--ink);}
+.btn-back{display:inline-flex;align-items:center;gap:9px;background:none;border:none;padding:0;color:var(--muted);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;transition:gap 0.3s ease;}
+.btn-back:hover{gap:13px;}
+.btn-next{display:block;text-align:left;background:none;border:none;padding:0;width:100%;transition:opacity 0.3s;}
+.btn-next:hover{opacity:0.7;}
+
+.reaction-item{padding:20px 0;border-bottom:1px solid var(--line);}
+.reaction-item p{font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:18px;line-height:1.45;color:var(--ink);}
+</style>
+</head>
+<body>
+
+<div id="layout-toggle">
+  <span class="toggle-label">Mise en page</span>
+  <button class="toggle-btn active" id="btn-a" onclick="setLayout('A')">A</button>
+  <span class="toggle-sep">/</span>
+  <button class="toggle-btn" id="btn-b" onclick="setLayout('B')">B</button>
+</div>
+
+<!-- ============ HOME A : revue verticale centrée ============ -->
+<div id="home-a" class="section active">
+  <main style="max-width:744px;margin:0 auto;padding:clamp(72px,13vh,150px) 28px 110px;">
+    <header style="text-align:center;padding-bottom:8px;">
+      <div style="font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);font-weight:600;">Réflexions d'un entrepreneur</div>
+      <h1 style="font-family:'Newsreader',Georgia,serif;font-weight:500;letter-spacing:-0.02em;font-size:clamp(46px,8vw,82px);line-height:1;margin:22px 0 0;">Damien Valdan</h1>
+      <div style="width:42px;height:1px;background:var(--line);margin:36px auto 0;"></div>
+    </header>
+
+    <article style="padding:52px 0 0;">
+      <div style="display:flex;align-items:baseline;gap:14px;">
+        <span style="font-family:'Newsreader',serif;font-style:italic;font-size:17px;color:var(--faint);">01</span>
+        <span style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);font-weight:600;">Publiée</span>
+      </div>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;letter-spacing:-0.015em;line-height:1.07;font-size:clamp(30px,4.6vw,46px);margin:16px 0 0;">Le salariat est devenu plus risqué que l'entrepreneuriat</h2>
+      <p style="font-size:18px;line-height:1.55;color:var(--muted);margin:18px 0 0;max-width:56ch;">On vous a vendu le contrat à durée indéterminée comme un abri. C'est devenu le placement le plus concentré de votre vie.</p>
+      <div style="margin-top:28px;">
+        <div class="bar-track"><div class="bar-fill" id="bar-a1"></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:11px;">
+          <button class="btn-vote" id="agree-a1" onclick="vote('s1','a')" style="font-size:13px;letter-spacing:0.01em;">D'accord · <span id="cnt-aa1"></span></button>
+          <button class="btn-vote" id="disagree-a1" onclick="vote('s1','d')" style="font-size:13px;letter-spacing:0.01em;"><span id="cnt-da1"></span> · Pas d'accord</button>
+        </div>
+      </div>
+      <div style="margin-top:22px;display:flex;align-items:center;gap:14px;border-top:1px solid var(--line);padding-top:18px;">
+        <input id="draft-a1" placeholder="Votre réaction en une phrase…" style="flex:1;background:none;border:none;outline:none;color:var(--ink);font-size:15.5px;padding:4px 0;" oninput="setDraft('s1',this.value)" onkeydown="draftKey(event,'s1')">
+        <button class="btn-react" onclick="send('s1')">Réagir</button>
+      </div>
+      <button class="btn-read" onclick="openArticle()" style="margin-top:26px;">Lire la réflexion <span style="font-size:15px;">→</span></button>
+    </article>
+
+    <article style="padding:48px 0 0;margin-top:52px;border-top:1px solid var(--line);">
+      <div style="display:flex;align-items:baseline;gap:14px;">
+        <span style="font-family:'Newsreader',serif;font-style:italic;font-size:17px;color:var(--faint);">02</span>
+        <span style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--faint);font-weight:600;">À paraître</span>
+      </div>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;letter-spacing:-0.015em;line-height:1.07;font-size:clamp(28px,4.2vw,42px);margin:16px 0 0;">L'IA ne tuera pas les TPE, elle va les sauver</h2>
+      <p style="font-size:18px;line-height:1.55;color:var(--muted);margin:18px 0 0;max-width:56ch;">Le débat se trompe d'échelle. Là où la grande entreprise voit un gain de productivité, l'artisan voit enfin l'assistant qu'il n'a jamais pu embaucher.</p>
+      <div style="margin-top:28px;">
+        <div class="bar-track"><div class="bar-fill" id="bar-a2"></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:11px;">
+          <button class="btn-vote" id="agree-a2" onclick="vote('s2','a')" style="font-size:13px;letter-spacing:0.01em;">D'accord · <span id="cnt-aa2"></span></button>
+          <button class="btn-vote" id="disagree-a2" onclick="vote('s2','d')" style="font-size:13px;letter-spacing:0.01em;"><span id="cnt-da2"></span> · Pas d'accord</button>
+        </div>
+      </div>
+      <div style="margin-top:22px;display:flex;align-items:center;gap:14px;border-top:1px solid var(--line);padding-top:18px;">
+        <input id="draft-a2" placeholder="Votre réaction en une phrase…" style="flex:1;background:none;border:none;outline:none;color:var(--ink);font-size:15.5px;padding:4px 0;" oninput="setDraft('s2',this.value)" onkeydown="draftKey(event,'s2')">
+        <button class="btn-react" onclick="send('s2')">Réagir</button>
+      </div>
+      <span style="display:inline-block;margin-top:26px;color:var(--faint);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;">Texte complet à paraître</span>
+    </article>
+
+    <article style="padding:48px 0 0;margin-top:52px;border-top:1px solid var(--line);">
+      <div style="display:flex;align-items:baseline;gap:14px;">
+        <span style="font-family:'Newsreader',serif;font-style:italic;font-size:17px;color:var(--faint);">03</span>
+        <span style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--faint);font-weight:600;">À paraître</span>
+      </div>
+      <h2 style="font-family:'Newsreader',serif;font-weight:500;letter-spacing:-0.015em;line-height:1.07;font-size:clamp(28px,4.2vw,42px);margin:16px 0 0;">La e-facture : une contrainte ou une chance déguisée ?</h2>
+      <p style="font-size:18px;line-height:1.55;color:var(--muted);margin:18px 0 0;max-width:56ch;">On la subit comme une formalité de plus. Et si l'obligation faisait, presque par accident, le ménage qu'aucun dirigeant ne s'autorise à faire ?</p>
+      <div style="margin-top:28px;">
+        <div class="bar-track"><div class="bar-fill" id="bar-a3"></div></div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:11px;">
+          <button class="btn-vote" id="agree-a3" onclick="vote('s3','a')" style="font-size:13px;letter-spacing:0.01em;">D'accord · <span id="cnt-aa3"></span></button>
+          <button class="btn-vote" id="disagree-a3" onclick="vote('s3','d')" style="font-size:13px;letter-spacing:0.01em;"><span id="cnt-da3"></span> · Pas d'accord</button>
+        </div>
+      </div>
+      <div style="margin-top:22px;display:flex;align-items:center;gap:14px;border-top:1px solid var(--line);padding-top:18px;">
+        <input id="draft-a3" placeholder="Votre réaction en une phrase…" style="flex:1;background:none;border:none;outline:none;color:var(--ink);font-size:15.5px;padding:4px 0;" oninput="setDraft('s3',this.value)" onkeydown="draftKey(event,'s3')">
+        <button class="btn-react" onclick="send('s3')">Réagir</button>
+      </div>
+      <span style="display:inline-block;margin-top:26px;color:var(--faint);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;">Texte complet à paraître</span>
+    </article>
+
+    <footer style="margin-top:80px;padding-top:48px;border-top:1px solid var(--line);">
+      <div style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);font-weight:600;">La prochaine réflexion dans votre boîte</div>
+      <div id="sub-form-a">
+        <div style="display:flex;gap:0;border-bottom:1px solid var(--line);max-width:440px;margin-top:18px;">
+          <input id="email-a" placeholder="votre@email.fr" style="flex:1;background:none;border:none;outline:none;color:var(--ink);font-size:16px;padding:10px 0;" oninput="state.email=this.value" onkeydown="emailKey(event)">
+          <button class="btn-sub" onclick="subscribe()">S'abonner</button>
+        </div>
+      </div>
+      <p id="sub-thanks-a" style="display:none;font-family:'Newsreader',serif;font-style:italic;font-size:19px;color:var(--ink);margin:16px 0 0;">Merci. Vous la recevrez avant les autres.</p>
+      <p style="font-size:14px;line-height:1.7;color:var(--faint);margin:56px 0 0;max-width:52ch;">Damien Valdan — trente-deux ans à construire, vendre, recommencer. J'écris ici ce que je n'ai pas le temps de dire en réunion. Pas de CV, pas de leçons : des convictions, à débattre.</p>
+    </footer>
+  </main>
+</div>
+
+<!-- ============ HOME B : affiche magazine asymétrique ============ -->
+<div id="home-b" class="section">
+  <main style="max-width:1080px;margin:0 auto;padding:clamp(64px,11vh,128px) 32px 110px;">
+    <header style="padding-bottom:52px;border-bottom:1px solid var(--line);">
+      <div style="font-size:12px;letter-spacing:0.22em;text-transform:uppercase;color:var(--muted);font-weight:600;">Réflexions d'un entrepreneur</div>
+      <h1 style="font-family:'Newsreader',Georgia,serif;font-weight:500;letter-spacing:-0.03em;line-height:0.94;font-size:clamp(50px,10vw,108px);margin:18px 0 0;">Damien Valdan</h1>
+    </header>
+
+    <article style="display:grid;grid-template-columns:clamp(56px,12vw,170px) 1fr;gap:clamp(20px,4vw,56px);padding:60px 0;border-bottom:1px solid var(--line);align-items:start;">
+      <div style="font-family:'Newsreader',serif;font-weight:400;line-height:0.78;color:var(--faint);font-size:clamp(50px,12vw,150px);">01</div>
+      <div>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;letter-spacing:-0.02em;line-height:1.04;font-size:clamp(34px,5.2vw,60px);margin:0;">Le salariat est devenu plus risqué que l'entrepreneuriat</h2>
+        <p style="font-size:18px;line-height:1.55;color:var(--muted);margin:20px 0 0;max-width:58ch;">On vous a vendu le contrat à durée indéterminée comme un abri. C'est devenu le placement le plus concentré de votre vie.</p>
+        <div style="margin-top:30px;max-width:520px;">
+          <div class="bar-track"><div class="bar-fill" id="bar-b1"></div></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:11px;">
+            <button class="btn-vote" id="agree-b1" onclick="vote('s1','a')" style="font-size:13px;">D'accord · <span id="cnt-ab1"></span></button>
+            <button class="btn-vote" id="disagree-b1" onclick="vote('s1','d')" style="font-size:13px;"><span id="cnt-db1"></span> · Pas d'accord</button>
+          </div>
+        </div>
+        <button class="btn-read" onclick="openArticle()" style="margin-top:26px;">Lire la réflexion <span style="font-size:15px;">→</span></button>
+      </div>
+    </article>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:clamp(36px,5vw,72px);padding:60px 0;">
+      <article>
+        <div style="font-family:'Newsreader',serif;font-weight:400;line-height:0.8;color:var(--faint);font-size:clamp(40px,6vw,64px);">02</div>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;letter-spacing:-0.015em;line-height:1.08;font-size:clamp(26px,3.4vw,34px);margin:18px 0 0;">L'IA ne tuera pas les TPE, elle va les sauver</h2>
+        <p style="font-size:16.5px;line-height:1.55;color:var(--muted);margin:16px 0 0;">Le débat se trompe d'échelle. Là où la grande entreprise voit un gain de productivité, l'artisan voit enfin l'assistant qu'il n'a jamais pu embaucher.</p>
+        <div style="margin-top:24px;">
+          <div class="bar-track"><div class="bar-fill" id="bar-b2"></div></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:11px;">
+            <button class="btn-vote" id="agree-b2" onclick="vote('s2','a')" style="font-size:13px;">D'accord · <span id="cnt-ab2"></span></button>
+            <button class="btn-vote" id="disagree-b2" onclick="vote('s2','d')" style="font-size:13px;"><span id="cnt-db2"></span> · Pas d'accord</button>
+          </div>
+        </div>
+        <span style="display:inline-block;margin-top:22px;color:var(--faint);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;">À paraître</span>
+      </article>
+      <article>
+        <div style="font-family:'Newsreader',serif;font-weight:400;line-height:0.8;color:var(--faint);font-size:clamp(40px,6vw,64px);">03</div>
+        <h2 style="font-family:'Newsreader',serif;font-weight:500;letter-spacing:-0.015em;line-height:1.08;font-size:clamp(26px,3.4vw,34px);margin:18px 0 0;">La e-facture : une contrainte ou une chance déguisée ?</h2>
+        <p style="font-size:16.5px;line-height:1.55;color:var(--muted);margin:16px 0 0;">On la subit comme une formalité de plus. Et si l'obligation faisait, presque par accident, le ménage qu'aucun dirigeant ne s'autorise à faire ?</p>
+        <div style="margin-top:24px;">
+          <div class="bar-track"><div class="bar-fill" id="bar-b3"></div></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:11px;">
+            <button class="btn-vote" id="agree-b3" onclick="vote('s3','a')" style="font-size:13px;">D'accord · <span id="cnt-ab3"></span></button>
+            <button class="btn-vote" id="disagree-b3" onclick="vote('s3','d')" style="font-size:13px;"><span id="cnt-db3"></span> · Pas d'accord</button>
+          </div>
+        </div>
+        <span style="display:inline-block;margin-top:22px;color:var(--faint);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;">À paraître</span>
+      </article>
+    </div>
+
+    <footer style="margin-top:32px;padding-top:48px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:40px;">
+      <p style="font-size:14px;line-height:1.7;color:var(--faint);margin:0;max-width:46ch;flex:1;min-width:260px;">Damien Valdan — trente-deux ans à construire, vendre, recommencer. J'écris ici ce que je n'ai pas le temps de dire en réunion. Pas de CV, pas de leçons : des convictions, à débattre.</p>
+      <div style="flex:1;min-width:260px;">
+        <div style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);font-weight:600;">La prochaine réflexion dans votre boîte</div>
+        <div id="sub-form-b">
+          <div style="display:flex;gap:0;border-bottom:1px solid var(--line);margin-top:16px;">
+            <input id="email-b" placeholder="votre@email.fr" style="flex:1;background:none;border:none;outline:none;color:var(--ink);font-size:16px;padding:10px 0;" oninput="state.email=this.value" onkeydown="emailKey(event)">
+            <button class="btn-sub" onclick="subscribe()">S'abonner</button>
+          </div>
+        </div>
+        <p id="sub-thanks-b" style="display:none;font-family:'Newsreader',serif;font-style:italic;font-size:19px;color:var(--ink);margin:14px 0 0;">Merci. Vous la recevrez avant les autres.</p>
+      </div>
+    </footer>
+  </main>
+</div>
+
+<!-- ============ ARTICLE ============ -->
+<div id="article" class="section">
+  <article style="max-width:680px;margin:0 auto;padding:clamp(48px,8vh,96px) 28px 110px;">
+    <button class="btn-back" onclick="goBack()"><span style="font-size:15px;">←</span> Toutes les réflexions</button>
+
+    <header style="margin-top:48px;">
+      <div style="display:flex;align-items:baseline;gap:14px;">
+        <span style="font-family:'Newsreader',serif;font-style:italic;font-size:18px;color:var(--faint);">01</span>
+        <span style="font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);font-weight:600;">La thèse</span>
+      </div>
+      <h1 style="font-family:'Newsreader',serif;font-weight:500;letter-spacing:-0.02em;line-height:1.04;font-size:clamp(38px,6vw,64px);margin:18px 0 0;">Le salariat est devenu plus risqué que l'entrepreneuriat</h1>
+      <p style="font-family:'Newsreader',serif;font-size:21px;line-height:1.5;color:var(--muted);margin:24px 0 0;max-width:52ch;">On vous a vendu le contrat à durée indéterminée comme un abri. C'est devenu le placement le plus concentré de votre vie.</p>
+    </header>
+
+    <div style="margin-top:48px;font-size:18px;line-height:1.78;color:#D9D4C9;max-width:62ch;">
+      <p style="margin:0 0 26px;">Pendant deux générations, la règle a paru évidente : le salariat, c'était la sécurité ; entreprendre, c'était le risque. Je crois que nous avons silencieusement inversé les deux, sans que personne ne le dise à voix haute.</p>
+      <p style="margin:0 0 26px;">Regardez ce qu'est réellement un salaire. Un revenu unique, versé par un seul payeur, qui peut décider seul un lundi matin, sur une ligne d'un tableur, qu'il n'a plus besoin de vous. Vous n'avez rien diversifié. Vous avez tout misé sur une seule case. Aucun conseiller ne recommanderait une telle position à un investisseur. On continue pourtant de la présenter comme le choix raisonnable.</p>
+      <p style="margin:0 0 26px;">L'entrepreneur fait l'inverse, souvent sans le formuler. Plusieurs clients, donc plusieurs façons d'amortir une mauvaise nouvelle. Plusieurs compétences entretenues, parce qu'il faut bien vendre, produire et compter le même jour. Et surtout : la main sur la décision. Quand le marché tremble, il peut baisser ses prix, changer d'offre, appeler trois prospects le soir même. Le salarié, lui, attend une réunion à laquelle il n'est pas convié.</p>
+
+      <blockquote style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(25px,3.6vw,36px);line-height:1.3;color:var(--ink);margin:44px 0;padding-left:26px;border-left:2px solid var(--accent);">La sécurité, aujourd'hui, ce n'est plus d'avoir un emploi. C'est de ne dépendre de personne pour en retrouver un.</blockquote>
+
+      <p style="margin:0 0 26px;">On m'objecte le revenu irrégulier, les nuits courtes, l'angoisse du 30 du mois. C'est vrai, et je ne le minimise pas. Mais comparez ce qui est comparable : le salarié aussi a des nuits courtes, simplement il les passe à espérer qu'une décision se prenne ailleurs, en sa faveur. L'incertitude n'a pas disparu de sa vie ; elle a seulement été rendue invisible, jusqu'au jour du plan social.</p>
+      <p style="margin:0 0 26px;">Je ne dis à personne de tout quitter demain. Ce serait remplacer une croyance par une autre, et je me méfie des injonctions autant que des certitudes confortables. Je dis seulement ceci : cessons de croire qu'un côté est sûr et l'autre aventureux. Les deux sont des paris. La vraie question n'est pas "est-ce risqué ?" mais "qui tient le volant ?".</p>
+      <p style="margin:0;">Construisez, même salarié, une deuxième source. Une compétence qui se vend ailleurs. Un client qui n'est pas votre employeur. Le jour où la ligne du tableur vous concerne, vous découvrirez que vous n'aviez jamais été aussi peu dépendant — et jamais aussi libre.</p>
+    </div>
+
+    <div style="margin-top:64px;padding-top:40px;border-top:1px solid var(--line);">
+      <div style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);font-weight:600;">Et vous ?</div>
+      <div class="bar-track tall" style="margin-top:18px;"><div class="bar-fill" id="bar-art"></div></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:13px;">
+        <button class="btn-vote" id="agree-art" onclick="vote('s1','a')" style="font-size:14px;">D'accord · <span id="cnt-aart"></span></button>
+        <button class="btn-vote" id="disagree-art" onclick="vote('s1','d')" style="font-size:14px;"><span id="cnt-dart"></span> · Pas d'accord</button>
+      </div>
+    </div>
+
+    <div style="margin-top:48px;">
+      <div style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);font-weight:600;">Réactions des lecteurs</div>
+      <div style="margin-top:18px;display:flex;align-items:center;gap:14px;border-bottom:1px solid var(--line);padding-bottom:14px;">
+        <input id="draft-art" placeholder="Votre réaction en une phrase…" style="flex:1;background:none;border:none;outline:none;color:var(--ink);font-size:16px;padding:6px 0;" oninput="setDraft('s1',this.value)" onkeydown="draftKey(event,'s1')">
+        <button class="btn-react" onclick="send('s1')">Publier</button>
+      </div>
+      <div id="reactions-list"></div>
+    </div>
+
+    <div style="margin-top:56px;padding-top:40px;border-top:1px solid var(--line);">
+      <div style="font-size:12px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);font-weight:600;">Réflexion suivante</div>
+      <button class="btn-next" onclick="goBack()">
+        <h3 style="font-family:'Newsreader',serif;font-weight:500;letter-spacing:-0.015em;line-height:1.08;font-size:clamp(26px,3.6vw,36px);color:var(--ink);margin:14px 0 0;">L'IA ne tuera pas les TPE, elle va les sauver</h3>
+        <span style="display:inline-block;margin-top:12px;color:var(--faint);font-size:12px;letter-spacing:0.16em;text-transform:uppercase;font-weight:600;">À paraître</span>
+      </button>
+    </div>
+  </article>
+</div>
+
+<script>
+const state = {
+  view: 'home',
+  layout: 'A',
+  votes: { s1: { a: 1284, d: 947 }, s2: { a: 613, d: 209 }, s3: { a: 742, d: 688 } },
+  myVote: { s1: null, s2: null, s3: null },
+  reactions: {
+    s1: [
+      { text: "Dit comme ça, mon CDI ressemble à un placement non diversifié." },
+      { text: "Facile à écrire quand on a déjà réussi. Mais l'idée tient." },
+      { text: "J'ai quitté mon poste l'an dernier. Je dors mieux." }
+    ],
+    s2: [{ text: "Encore faut-il avoir le temps d'apprendre ces outils." }],
+    s3: [{ text: "Une chance, oui. Mais le calendrier reste intenable." }]
+  },
+  drafts: { s1: '', s2: '', s3: '' },
+  email: '',
+  subscribed: false
+};
+
+function fmt(n) { return Number(n).toLocaleString('fr-FR'); }
+
+function loadState() {
+  try {
+    const raw = localStorage.getItem('dv_manifeste_v1');
+    if (!raw) return;
+    const s = JSON.parse(raw);
+    if (s.votes) Object.assign(state.votes, s.votes);
+    if (s.myVote) Object.assign(state.myVote, s.myVote);
+    if (s.reactions) ['s1','s2','s3'].forEach(id => { if (s.reactions[id]) state.reactions[id] = s.reactions[id]; });
+    if (s.subscribed) state.subscribed = true;
+  } catch(e) {}
+}
+
+function persist() {
+  try {
+    localStorage.setItem('dv_manifeste_v1', JSON.stringify({
+      votes: state.votes, myVote: state.myVote,
+      reactions: state.reactions, subscribed: state.subscribed
+    }));
+  } catch(e) {}
+}
+
+function vote(id, side) {
+  const v = Object.assign({}, state.votes[id]);
+  const cur = state.myVote[id];
+  if (cur === side) { v[side] = Math.max(0, v[side] - 1); state.myVote[id] = null; }
+  else { if (cur) v[cur] = Math.max(0, v[cur] - 1); v[side]++; state.myVote[id] = side; }
+  state.votes[id] = v;
+  persist();
+  updateBars();
+}
+
+function setDraft(id, val) {
+  state.drafts[id] = val;
+  const pairs = { s1: ['a1','art'], s2: ['a2'], s3: ['a3'] };
+  (pairs[id] || []).forEach(suffix => {
+    const el = document.getElementById('draft-' + suffix);
+    if (el && document.activeElement !== el) el.value = val;
+  });
+}
+
+function draftKey(e, id) { if (e.key === 'Enter') { e.preventDefault(); send(id); } }
+
+function send(id) {
+  const t = (state.drafts[id] || '').trim();
+  if (!t) return;
+  state.reactions[id] = [{ text: t }, ...state.reactions[id]];
+  state.drafts[id] = '';
+  persist();
+  ['draft-a1','draft-a2','draft-a3','draft-art'].forEach(elId => {
+    const el = document.getElementById(elId);
+    if (el) el.value = '';
+  });
+  renderReactions();
+}
+
+function emailKey(e) { if (e.key === 'Enter') { e.preventDefault(); subscribe(); } }
+
+function subscribe() {
+  const ea = document.getElementById('email-a');
+  const eb = document.getElementById('email-b');
+  const email = (ea ? ea.value : '') || (eb ? eb.value : '') || state.email;
+  if (!email || !email.includes('@')) return;
+  state.subscribed = true;
+  persist();
+  updateSubscription();
+}
+
+function openArticle() {
+  state.view = 'article';
+  window.scrollTo(0, 0);
+  render();
+}
+
+function goBack() {
+  state.view = 'home';
+  window.scrollTo(0, 0);
+  render();
+}
+
+function setLayout(l) {
+  state.layout = l;
+  render();
+}
+
+function updateBars() {
+  const slots = [
+    { id: 's1', suffixes: ['a1','b1','art'] },
+    { id: 's2', suffixes: ['a2','b2'] },
+    { id: 's3', suffixes: ['a3','b3'] }
+  ];
+  slots.forEach(({ id, suffixes }) => {
+    const v = state.votes[id];
+    const total = v.a + v.d;
+    const pct = total ? Math.round((v.a / total) * 100) : 50;
+    const mine = state.myVote[id];
+    suffixes.forEach(suffix => {
+      const bar = document.getElementById('bar-' + suffix);
+      const ag = document.getElementById('agree-' + suffix);
+      const di = document.getElementById('disagree-' + suffix);
+      const ca = document.getElementById('cnt-a' + suffix);
+      const cd = document.getElementById('cnt-d' + suffix);
+      if (bar) bar.style.width = pct + '%';
+      if (ag) ag.style.color = mine === 'a' ? 'var(--ink)' : 'var(--muted)';
+      if (di) di.style.color = mine === 'd' ? 'var(--ink)' : 'var(--muted)';
+      if (ca) ca.textContent = fmt(v.a);
+      if (cd) cd.textContent = fmt(v.d);
+    });
+  });
+}
+
+function renderReactions() {
+  const list = document.getElementById('reactions-list');
+  if (!list) return;
+  list.innerHTML = state.reactions.s1.map(r =>
+    `<div class="reaction-item"><p>« ${r.text} »</p></div>`
+  ).join('');
+}
+
+function updateSubscription() {
+  ['a','b'].forEach(v => {
+    const form = document.getElementById('sub-form-' + v);
+    const thanks = document.getElementById('sub-thanks-' + v);
+    if (form) form.style.display = state.subscribed ? 'none' : 'block';
+    if (thanks) thanks.style.display = state.subscribed ? 'block' : 'none';
+  });
+}
+
+function render() {
+  const sections = ['home-a','home-b','article'];
+  sections.forEach(s => document.getElementById(s).classList.remove('active'));
+
+  const toggle = document.getElementById('layout-toggle');
+
+  if (state.view === 'home') {
+    document.getElementById(state.layout === 'B' ? 'home-b' : 'home-a').classList.add('active');
+    toggle.style.display = 'flex';
+    document.getElementById('btn-a').classList.toggle('active', state.layout === 'A');
+    document.getElementById('btn-b').classList.toggle('active', state.layout === 'B');
+  } else {
+    document.getElementById('article').classList.add('active');
+    toggle.style.display = 'none';
+  }
+
+  updateBars();
+  renderReactions();
+  updateSubscription();
+}
+
+loadState();
+render();
+</script>
+</body>
+</html>
